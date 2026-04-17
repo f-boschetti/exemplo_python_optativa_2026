@@ -37,13 +37,24 @@
                 <td>
                     <a href="/visualizar/{{ carro.id }}/" class="btn btn-dark">Detalhes</a>
                     <a href="/editar/{{ carro.id }}/" class="btn btn-warning">Editar</a>
-                    <a href="/deletar/{{ carro.id }}/" class="btn btn-danger">Deletar</a>
+                    <a href="/deletar/{{ carro.id }}/" class="btn btn-danger" onclick="return confirm('Tem certeza?')">Deletar</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
+    <nav>
+        <ul class="pagination">
+            {% if carros.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ carros.previous_page_number }}">&laquo; Anterior</a></li>
+            {% endif %}
+
+            {% if carros.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ carros.next_page_number }}">Próxima &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 </body>
 
 </html>
